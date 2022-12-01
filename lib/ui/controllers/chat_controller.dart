@@ -25,23 +25,31 @@ class ChatController extends GetxController {
   // método en el que nos suscribimos  a los dos streams
   void subscribeToUpdated(uidUser) {
     messages.clear();
-
     // obtenemos la instancia del AuthenticationController
     AuthenticationController authenticationController = Get.find();
-
     String chatKey = getChatKey(authenticationController.getUid(), uidUser);
 
-    // TODO
-    // newEntryStreamSubscription = databaseReference - child msg - child chatKey - listen
+    // TODO cambias arturo
+    newEntryStreamSubscription = databaseReference
+        .child('msg')
+        .child(chatKey)
+        .onChildAdded
+        .listen(_onEntryAdded);
 
-    // TODO
-    //  updateEntryStreamSubscription = databaseReference - child msg - child chatKey - listen
+    // TODO cambios arturo
+    updateEntryStreamSubscription = databaseReference
+        .child('msg')
+        .child(chatKey)
+        .onChildChanged
+        .listen(_onEntryChanged);
   }
 
   // método en el que cerramos los streams
   void unsubscribe() {
-    //TODO
+    //TODO cambios arturo
     // cancelar las subscripciones a los streams
+    newEntryStreamSubscription.cancel();
+    updateEntryStreamSubscription.cancel();
   }
 
   // este método es llamado cuando se tiene una nueva entrada
@@ -91,8 +99,12 @@ class ChatController extends GetxController {
     String key = getChatKey(authenticationController.getUid(), remoteUserUid);
     String senderUid = authenticationController.getUid();
     try {
-      // TODO
-      // databaseReference - child('msg') - child(key) - push() - set({'senderUid': senderUid, 'msg': msg})
+      // TODO cambios arturo
+      databaseReference
+          .child('msg')
+          .child(key)
+          .push()
+          .set({'senderUid': senderUid, 'msg': msg});
     } catch (error) {
       logError(error);
       return Future.error(error);
@@ -104,11 +116,11 @@ class ChatController extends GetxController {
   void initializeChats() {
     UserController userController = Get.find();
     List<AppUser> users = userController.allUsers();
-    createChat(users[0].uid, users[1].uid, users[0].uid, "Hola B, soy A");
-    createChat(users[1].uid, users[0].uid, users[1].uid, "Hola A, cómo estás?");
-    createChat(users[0].uid, users[2].uid, users[0].uid, "Hola C, soy A");
-    createChat(users[0].uid, users[2].uid, users[2].uid, "Hola A, Cómo estás?");
-    createChat(users[1].uid, users[2].uid, users[1].uid, "Hola C, soy B");
-    createChat(users[2].uid, users[1].uid, users[2].uid, "Todo bien B");
+    // createChat(users[0].uid, users[1].uid, users[0].uid, "Hola B, soy A");
+    // createChat(users[1].uid, users[0].uid, users[1].uid, "Hola A, cómo estás?");
+    // createChat(users[0].uid, users[2].uid, users[0].uid, "Hola C, soy A");
+    // createChat(users[0].uid, users[2].uid, users[2].uid, "Hola A, Cómo estás?");
+    // createChat(users[1].uid, users[2].uid, users[1].uid, "Hola C, soy B");
+    // createChat(users[2].uid, users[1].uid, users[2].uid, "Todo bien B");
   }
 }

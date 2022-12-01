@@ -35,6 +35,7 @@ class AuthenticationController extends GetxController {
       // userController
       await userController.createUser(email, userCredential.user!.uid);
       return Future.value();
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return Future.error("The password is too weak");

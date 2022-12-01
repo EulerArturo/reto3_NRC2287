@@ -12,9 +12,9 @@ class AuthenticationPage extends StatelessWidget {
 
   void signIn() async {
     // aquí creamos los tres usuarios
-    await authenticationController.signup('a@a.com', '123456');
-    await authenticationController.signup('b@b.com', '123456');
-    await authenticationController.signup('c@c.com', '123456');
+    await authenticationController.signup('arturo@gmail.com', '123456');
+    await authenticationController.signup('joan@gmail.com', '123456');
+    await authenticationController.signup('sergio@gmail.com', '123456');
   }
 
   void login(String user) {
@@ -25,7 +25,7 @@ class AuthenticationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Chat App - Autenticación")),
+      appBar: AppBar(title: const Text("Chat")),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -72,14 +72,14 @@ class AuthenticationPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             ElevatedButton(
-                                onPressed: () => login('a@a.com'),
-                                child: const Text("Ingresar con usuario A")),
+                                onPressed: () => login('arturo@gmail.com'),
+                                child: const Text("Ingresar con usuario Arturo")),
                             ElevatedButton(
-                                onPressed: () => login('b@b.com'),
-                                child: const Text("Ingresar con usuario B")),
+                                onPressed: () => login('joan@gmail.com'),
+                                child: const Text("Ingresar con usuario joan")),
                             ElevatedButton(
-                                onPressed: () => login('c@c.com'),
-                                child: const Text("Ingresar con usuario C")),
+                                onPressed: () => login('sergio@gmail.com'),
+                                child: const Text("Ingresar con usuario sergio")),
                           ]),
                     ),
                   ),
