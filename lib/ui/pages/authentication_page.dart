@@ -70,7 +70,7 @@ class AuthenticationPage extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(top: 50.0, bottom: 0.0),
               child: Text(
-                'CHAT UNINORTE    ',
+                'CHAT UNINORTE',
                 style: TextStyle(
                   fontSize: 40,
                   color: Colors.white70,
@@ -80,7 +80,7 @@ class AuthenticationPage extends StatelessWidget {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 10, bottom: 50.0),
+              padding: const EdgeInsets.only(top: 10, bottom: 50.0, left: 25),
               child: Center(
                 child: Container(
                     width: 200,
