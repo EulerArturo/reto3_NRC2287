@@ -25,26 +25,12 @@ class AuthenticationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text("Chat",
-//           style: TextStyle(
-//             color: Colors.white,
-//             fontWeight: FontWeight.w600 ),),
-// // colocar icono en el appbar
-//          actions: <Widget>[
-//           IconButton(
-//             icon: const Icon(Icons.supervised_user_circle_rounded),
-//             onPressed: () {},
-//           )]),
+
       backgroundColor: Colors.lightBlue[900],
       body: SingleChildScrollView(
         child: Form(
           child: Column(
 
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-
-              // ignore: prefer_const_literals_to_create_immutables
               children: <Widget>[
                 const Padding(
                   padding: EdgeInsets.only(top: 50.0, bottom: 0.0),
