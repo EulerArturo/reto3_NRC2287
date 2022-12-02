@@ -25,8 +25,20 @@ class AuthenticationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Chat")),
+
+      appBar: AppBar(
+        title: const Text("Chat", 
+          style: TextStyle(
+            color: Colors.white, 
+            fontWeight: FontWeight.w600 ),),
+// colocar icono en el appbar
+         actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.supervised_user_circle_rounded),
+            onPressed: () {},
+          )]),
       body: SafeArea(
+        
         child: Center(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -34,24 +46,27 @@ class AuthenticationPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
+
                     decoration: BoxDecoration(
-                        color: Colors.blue.shade100,
+                        color: Colors.grey.shade50,
+
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10))),
                     child: Column(children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
+                          
                           onPressed: signIn,
-                          child: const Text("Crear los tres usuarios"),
+                          child: const Text("Crear los tres usuarios", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600 )),
                         ),
                       ),
                       const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text(
-                          'Antes de crear los usuarios, borrar todos los usuarios del sistema de autenticación y la base de datos de tiempo real de firebase',
+                          'Antes de crear los usuarios, borrar todos los usuarios del sistema de autenticación y la base de datos de tiempo real de firebase', 
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.grey,
                               fontWeight: FontWeight.bold,
                               fontSize: 15),
                         ),
@@ -65,7 +80,7 @@ class AuthenticationPage extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
-                          color: Colors.blue.shade100,
+                          color: Colors.grey.shade50,
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10))),
                       child: Column(
@@ -73,13 +88,22 @@ class AuthenticationPage extends StatelessWidget {
                           children: [
                             ElevatedButton(
                                 onPressed: () => login('arturo@gmail.com'),
-                                child: const Text("Ingresar con usuario Arturo")),
+                                child: const Text("Ingresar con usuario Arturo",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600))),
                             ElevatedButton(
                                 onPressed: () => login('joan@gmail.com'),
-                                child: const Text("Ingresar con usuario joan")),
+                                child: const Text("Ingresar con usuario joan",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600))),
                             ElevatedButton(
                                 onPressed: () => login('sergio@gmail.com'),
-                                child: const Text("Ingresar con usuario sergio")),
+                                child: const Text("Ingresar con usuario sergio",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600))),
                           ]),
                     ),
                   ),
