@@ -25,86 +25,232 @@ class AuthenticationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: AppBar(
-        title: const Text("Chat", 
-          style: TextStyle(
-            color: Colors.white, 
-            fontWeight: FontWeight.w600 ),),
-// colocar icono en el appbar
-         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.supervised_user_circle_rounded),
-            onPressed: () {},
-          )]),
-      body: SafeArea(
-        
-        child: Center(
+//       appBar: AppBar(
+//         title: const Text("Chat",
+//           style: TextStyle(
+//             color: Colors.white,
+//             fontWeight: FontWeight.w600 ),),
+// // colocar icono en el appbar
+//          actions: <Widget>[
+//           IconButton(
+//             icon: const Icon(Icons.supervised_user_circle_rounded),
+//             onPressed: () {},
+//           )]),
+      backgroundColor: Colors.lightBlue[900],
+      body: SingleChildScrollView(
+        child: Form(
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
 
-                    decoration: BoxDecoration(
-                        color: Colors.grey.shade50,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
 
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10))),
-                    child: Column(children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          
-                          onPressed: signIn,
-                          child: const Text("Crear los tres usuarios", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600 )),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Antes de crear los usuarios, borrar todos los usuarios del sistema de autenticación y la base de datos de tiempo real de firebase', 
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        ),
-                      )
-                    ]),
+              // ignore: prefer_const_literals_to_create_immutables
+              children: <Widget>[
+                const Padding(
+                  padding: EdgeInsets.only(top: 50.0, bottom: 0.0),
+                  child: Text(
+                    'CHAT UNINORTE    ',
+                    style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.white70,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 50.0),
+                  child: Center(
                     child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade50,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            ElevatedButton(
-                                onPressed: () => login('arturo@gmail.com'),
-                                child: const Text("Ingresar con usuario Arturo",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600))),
-                            ElevatedButton(
-                                onPressed: () => login('joan@gmail.com'),
-                                child: const Text("Ingresar con usuario joan",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600))),
-                            ElevatedButton(
-                                onPressed: () => login('sergio@gmail.com'),
-                                child: const Text("Ingresar con usuario sergio",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600))),
-                          ]),
+                        width: 200,
+                        height: 150,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0)),
+                        child: Image.network(
+                            'https://raw.githubusercontent.com/luisserranopro/curso-flutter/master/19firebaseapp/assets/auth.png')),
+                  ),
+                ),
+
+// ************************* container 1 *********** *********************************************************************************************
+
+                Container(
+                  height: 60,
+                  width: 350,
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    onPressed: signIn,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        children: <Widget>[
+                          Image.network('https://i.imgur.com/QTINPQt.png'),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 40, right: 55),
+                            child: Text(
+                              'Crear los tres usuarios',
+                              style: TextStyle(
+                                fontSize: 19,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                backgroundColor: Colors.transparent,
+                                letterSpacing: 0.0,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.transparent,
+                      onPrimary: Colors.white,
+                      shadowColor: Colors.black45,
+                      elevation: 8,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(
+                          color: Colors.white70,
+                          width: 2,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(
+                    height: 60,
+                    width: 350,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text(
+                          'Antes de crear los usuarios, borrar todos los usuarios del sistema de autenticación y la base de datos de tiempo real de firebase'),
+                    )),
+
+// **********************************   container 2       *******************************************************************************
+                Container(
+                  height: 60,
+                  width: 350,
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    onPressed: () => login('arturo@gmail.com'),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        children: <Widget>[
+                          Image.network('https://i.imgur.com/3aJi0Sv.png'),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 40, right: 55),
+                            child: Text(
+                              'Ingresar con Arturo',
+                              style: TextStyle(
+                                fontSize: 19,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                backgroundColor: Colors.transparent,
+                                letterSpacing: 0.0,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.transparent,
+                      onPrimary: Colors.white,
+                      shadowColor: Colors.black45,
+                      elevation: 8,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(
+                          color: Colors.white70,
+                          width: 2,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+// *****************************   container 3          ************************************************************************************
+                Container(
+                  height: 60,
+                  width: 350,
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    onPressed: () => login('joan@gmail.com'),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        children: <Widget>[
+                          Image.network('https://i.imgur.com/3aJi0Sv.png'),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 40, right: 55),
+                            child: Text(
+                              'Ingresar con Joan',
+                              style: TextStyle(
+                                fontSize: 19,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                backgroundColor: Colors.transparent,
+                                letterSpacing: 0.0,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.transparent,
+                      onPrimary: Colors.white,
+                      shadowColor: Colors.black45,
+                      elevation: 8,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(
+                          color: Colors.white70,
+                          width: 2,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+// *****************   container 4    ************************************************************************************************
+                Container(
+                  height: 60,
+                  width: 350,
+                  padding: const EdgeInsets.only(top: 10),
+                  child: ElevatedButton(
+                    onPressed: () => login('sergio@gmail.com'),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                        children: <Widget>[
+                          Image.network('https://i.imgur.com/3aJi0Sv.png'),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 40, right: 55),
+                            child: Text(
+                              'Ingresar con Sergio',
+                              style: TextStyle(
+                                fontSize: 19,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                backgroundColor: Colors.transparent,
+                                letterSpacing: 0.0,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.transparent,
+                      onPrimary: Colors.white,
+                      shadowColor: Colors.black45,
+                      elevation: 8,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: const BorderSide(
+                          color: Colors.white70,
+                          width: 2,
+                        ),
+                      ),
                     ),
                   ),
                 ),
