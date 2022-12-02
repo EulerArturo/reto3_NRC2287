@@ -49,6 +49,7 @@ class _UserListPageState extends State<UserListPage> {
     return Padding(
       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
       child: Card(
+        
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         shadowColor: Colors.white,
         elevation: 5,

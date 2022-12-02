@@ -54,16 +54,24 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Widget _item(Message element, int posicion, String uid) {
-    return Card(
-      margin: const EdgeInsets.all(4.0),
-      // cambiamos el color dependiendo de quién mandó el usuario
-      color: uid == element.senderUid ? Colors.yellow[200] : Colors.grey[300],
-      child: ListTile(
-        title: Text(
-          element.msg,
-          textAlign:
-              // cambiamos el textAlign dependiendo de quién mandó el usuario
-              uid == element.senderUid ? TextAlign.right : TextAlign.left,
+    
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        elevation: 10,
+        shadowColor: Colors.white,
+        margin: const EdgeInsets.all(4.0),
+        // cambiamos el color dependiendo de quién mandó el usuario
+        color:  Colors.lightBlue[900] ,
+        child: ListTile(
+          title: Text(
+            element.msg,
+            textAlign:
+                // cambiamos el textAlign dependiendo de quién mandó el usuario
+                uid == element.senderUid ? TextAlign.right : TextAlign.left,
+            style: TextStyle(color: uid == element.senderUid ? Colors.white : Colors.yellowAccent),
+          ),
         ),
       ),
     );
@@ -93,34 +101,60 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Widget _textInput() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 3,
-          child: Container(
-            margin: const EdgeInsets.only(left: 5.0, top: 5.0),
-            child: TextField(
-              key: const Key('MsgTextField'),
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Your message',
+    return Padding(
+      padding: const EdgeInsets.only(right: 15, left: 15),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 3,
+            child: Container(
+              margin: const EdgeInsets.only(left: 5.0, top: 5.0),
+              child: TextField(
+                autofocus: true,
+                autocorrect: true,
+                textCapitalization: TextCapitalization.sentences,
+                style: const TextStyle(color: Colors.white),
+                cursorColor: Colors.white,
+                key: const Key('MsgTextField'),
+
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.bolt, color: Colors.white,),
+                  hintText: ' Nuevo mensaje...',
+                  hintStyle: TextStyle(color: Colors.white38),
+
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    borderSide: BorderSide(
+                      color: Colors.white,
+                      width: 1
+                    )
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    borderSide: BorderSide(color: Colors.white, width: 1,)
+                  ),
+                  labelText: 'Mensaje...',
+                  labelStyle: TextStyle(
+                    color: Colors.white
+                  )
+                ),
+                onSubmitted: (value) {
+                  _sendMsg(_controller.text);
+                  _controller.clear();
+                },
+                controller: _controller,
               ),
-              onSubmitted: (value) {
-                _sendMsg(_controller.text);
-                _controller.clear();
-              },
-              controller: _controller,
             ),
           ),
-        ),
-        TextButton(
-            key: const Key('sendButton'),
-            child: const Text('Send'),
-            onPressed: () {
-              _sendMsg(_controller.text);
-              _controller.clear();
-            })
-      ],
+          TextButton(
+              key: const Key('sendButton'),
+              child: const Text('Enviar', style: TextStyle(color: Colors.white),),
+              onPressed: () {
+                _sendMsg(_controller.text);
+                _controller.clear();
+              })
+        ],
+      ),
     );
   }
 
@@ -133,11 +167,24 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToEnd());
     return Scaffold(
-        appBar: AppBar(title: Text("Chat with $remoteEmail")),
+        backgroundColor: Colors.lightBlue[900],
+        appBar: AppBar(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          elevation: 10,
+          shadowColor: Colors.white,
+          backgroundColor: Colors.lightBlue[900],
+          title: Text("Chat con  $remoteEmail")),
+        
         body: Padding(
           padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 25.0),
           child: Column(
-            children: [Expanded(flex: 4, child: _list()), _textInput()],
+            
+            children: [
+              const Divider(),
+              Expanded(
+                flex: 4, 
+                child: _list()), 
+                _textInput()],
           ),
         ));
   }
