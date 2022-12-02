@@ -111,16 +111,17 @@ class ChatController extends GetxController {
     }
   }
 
+// por si acaso lo necesitan algun dia
   // en esté método creamos chats inicialies con los que podemos probar la lectura
   // de mensajes
-  void initializeChats() {
-    UserController userController = Get.find();
-    List<AppUser> users = userController.allUsers();
-    // createChat(users[0].uid, users[1].uid, users[0].uid, "Hola B, soy A");
-    // createChat(users[1].uid, users[0].uid, users[1].uid, "Hola A, cómo estás?");
-    // createChat(users[0].uid, users[2].uid, users[0].uid, "Hola C, soy A");
-    // createChat(users[0].uid, users[2].uid, users[2].uid, "Hola A, Cómo estás?");
-    // createChat(users[1].uid, users[2].uid, users[1].uid, "Hola C, soy B");
-    // createChat(users[2].uid, users[1].uid, users[2].uid, "Todo bien B");
-  }
+  // void initializeChats() {
+  //   UserController userController = Get.find();
+  //   List<AppUser> users = userController.allUsers();
+  //   // createChat(users[0].uid, users[1].uid, users[0].uid, "Hola B, soy A");
+  //   // createChat(users[1].uid, users[0].uid, users[1].uid, "Hola A, cómo estás?");
+  //   // createChat(users[0].uid, users[2].uid, users[0].uid, "Hola C, soy A");
+  //   // createChat(users[0].uid, users[2].uid, users[2].uid, "Hola A, Cómo estás?");
+  //   // createChat(users[1].uid, users[2].uid, users[1].uid, "Hola C, soy B");
+  //   // createChat(users[2].uid, users[1].uid, users[2].uid, "Todo bien B");
+  // }
 }

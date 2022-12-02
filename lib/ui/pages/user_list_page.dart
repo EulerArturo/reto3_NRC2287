@@ -46,19 +46,27 @@ class _UserListPageState extends State<UserListPage> {
   Widget _item(AppUser element) {
     // Widget usado en la lista de los usuarios
     // mostramos el correo y uid
-    return Card(
-      margin: const EdgeInsets.all(4.0),
-      child: ListTile(
-        onTap: () {
-          Get.to(() => const ChatPage(), arguments: [
-            element.uid,
-            element.email,
-          ]);
-        },
-        title: Text(
-          element.email,
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        shadowColor: Colors.white,
+        elevation: 5,
+        
+        margin: const EdgeInsets.all(4.0),
+        color: Colors.lightBlue[900],
+        child: ListTile(
+          onTap: () {
+            Get.to(() => const ChatPage(), arguments: [
+              element.uid,
+              element.email,
+            ]);
+          },
+          title: Text(
+            'Chat con: '+ element.email, style: const TextStyle(color: Colors.white) ,
+          ),
+          
         ),
-        subtitle: Text(element.uid),
       ),
     );
   }
@@ -85,15 +93,25 @@ class _UserListPageState extends State<UserListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.lightBlue[900],
+        
         appBar: AppBar(
-          title: Text(" ${authenticationController.userEmail()}"),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20)
+          ),
+          shadowColor: Colors.white,
+          elevation: 10,
+          backgroundColor: Colors.lightBlue[900] ,
+          title: Text("Bienvenido  ${authenticationController.userEmail()}"),
           actions: [
-            // botón para crear unos chats para arrancar el demo
-            IconButton(
-                onPressed: () {
-                  chatController.initializeChats();
-                },
-                icon: const Icon(Icons.play_circle_outlined)),
+
+            // por si acaso lo necesitan algun dia este sirve para inicializar los mensajes por defecto
+            // // botón para crear unos chats para arrancar el demo
+            // IconButton(
+            //     onPressed: () {
+            //       chatController.initializeChats();
+            //     },
+            //     icon: const Icon(Icons.play_circle_outlined)),
             // botón para cerrar la sesión con el usuario
             IconButton(
                 icon: const Icon(Icons.exit_to_app),
@@ -102,6 +120,11 @@ class _UserListPageState extends State<UserListPage> {
                 }),
           ],
         ),
-        body: _list());
+        body: 
+        
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: _list(),
+        ));
   }
 }
